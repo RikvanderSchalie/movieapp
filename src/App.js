@@ -3,14 +3,14 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   console.log("WHAT IS THE STATE:", movies);
 
   useEffect(() => {
     console.log("ON MOUNT:");
     async function fetchMovies() {
       const response = await axios.get(
-        "http://www.omdbapi.com/?s=love&apikey=APIKEY_HERE"
+        "http://www.omdbapi.com/?s=love&apikey=94c16227"
       );
       console.log(response.data.Search);
       setMovies(response.data.Search); // trigger rerender
@@ -36,7 +36,7 @@ function App() {
               return (
                 <div key={movie.imdbID}>
                   <h1>{movie.Title}</h1>
-                  <img src={movie.Poster} />
+                  <img src={movie.Poster} alt={""} />
                 </div>
               );
             })
